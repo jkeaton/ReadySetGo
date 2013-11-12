@@ -8,11 +8,13 @@ public class Dealer {
 	Vector<Vector<Integer>> possibilities;
 	Vector<Vector<Integer>> actualDecks;
 	Vector<Integer> nextVec;
+	Vector<Card> currentDeck;
 	File[] cardImages = new File[81];
 	int[][] cardCombos = new int[81][4];
 	
 	public Dealer(){
 		/* Initialize the position Vectors */
+		currentDeck = new Vector<Card>(); // will be used to return the current deck after each deck reset
 		possibilities = new Vector<Vector<Integer>>();
 		actualDecks = new Vector<Vector<Integer>>();
 		nextVec = new Vector<Integer>();
@@ -67,9 +69,11 @@ public class Dealer {
 	public void resetVecs(){
 		/* Clear actual decks */
 		for(Vector<Integer> v : actualDecks){
+			System.err.println("1. help!!!\n");
 			v.clear();
 		}
 		for(Vector<Integer> v : possibilities){
+			System.err.println("2. help!!!\n");
 			v.clear();
 		}
 		actualDecks.clear(); // empty the actual decks to free up space again
@@ -92,10 +96,12 @@ public class Dealer {
 	public void testNewDeck(){
 		if(actualDecks.size()>1){
 			nextVec = actualDecks.remove(0);
+			System.err.println("3. help!!!\n");
 		}
 		else if(actualDecks.size() == 1){
 			nextVec = actualDecks.remove(0);
 			resetVecs();
+			System.err.println("4. help!!!\n");
 		}
 	}
 	
@@ -110,18 +116,31 @@ public class Dealer {
 						cardCombos[fillCounter][1] = j;
 						cardCombos[fillCounter][2] = k;
 						cardCombos[fillCounter][3] = m;
+						fillCounter++;
 					}
 				}
 			}
 		}
 	}
 	
-	public Vector<Card> getNewDeck(){
-		Vector<Card> myVec = new Vector<Card>();
-		for(int i : nextVec){
-			Card c = new Card(cardCombos[i][0],cardCombos[i][1],cardCombos[i][2],cardCombos[i][3],cardImages[i]);
-			myVec.add(c);
+	public Card dealCard(){
+		if(!currentIsEmpty())
+			return currentDeck.remove(0);
+		else{
+			testNewDeck();
+			return null;
 		}
-		return myVec;
+	}
+	
+	public boolean currentIsEmpty(){
+		return currentDeck.isEmpty();
+	}
+	
+	public void setNewDeck(){
+		currentDeck.clear();
+		for(int i : nextVec){
+			Card c = new Card(cardCombos[i-1][0],cardCombos[i-1][1],cardCombos[i-1][2],cardCombos[i-1][3]/*,cardImages[i]*/);
+			currentDeck.add(c);
+		}
 	}
 }

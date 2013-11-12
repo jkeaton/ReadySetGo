@@ -32,7 +32,7 @@ public class Card {
 	 * @param c the shape on the card
 	 * @param d the amount of figures on the card
 	 */
-	public Card(int a, int b, int c, int d, File imgFile){
+	public Card(int a, int b, int c, int d/*, File imgFile*/){
 		switch(a){
 		case 1:
 			myShade = Shade.SOLID;
@@ -79,7 +79,7 @@ public class Card {
 			amt = d;
 		}
 		setCardMap(a,b,c,d);
-		setImage(imgFile);
+		//setImage(imgFile);
 	}
 	
 	/**
@@ -115,5 +115,9 @@ public class Card {
 	
 	public BufferedImage getBufferedImage(){
 		return bufferedImage;
+	}
+	
+	public String toString(){
+		return String.format("Card : %d%d%d%d\n",cardMap[0],cardMap[1],cardMap[2],cardMap[3]);
 	}
 }
