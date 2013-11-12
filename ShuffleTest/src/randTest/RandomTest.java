@@ -3,9 +3,12 @@ package randTest;
 public class RandomTest {
 	
 	public static void main(String[]args){
+		System.err.println("creating the dealer\n");
 		Dealer sam = new Dealer();
-		/* Create decks to be tested */
+		System.err.println("done creating the dealer\n");
+		/* Test the Dealer */
 		testRand(sam);
+		System.err.println("finished with testRand(sam)\n");
 	}
 	
 	/**
@@ -14,8 +17,6 @@ public class RandomTest {
 	 * @return the number of times a card appears in the same postion in 81 shuffled decks
 	 */
 	private static void testRand(Dealer d){
-		d.testNewDeck();
-		d.setNewDeck();
 		while(!d.currentIsEmpty()){
 			System.out.println(d.dealCard());
 		}

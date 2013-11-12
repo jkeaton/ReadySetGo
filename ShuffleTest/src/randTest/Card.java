@@ -6,12 +6,11 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+enum Shade {SOLID,DASHED,HOLLOW}
+enum Colors {RED,PURPLE,GREEN}
+enum Shape {SQUIGGLE,OVAL,DIAMOND}
+
 public class Card {
-	
-	public enum Shade {SOLID,DASHED,HOLLOW}
-	public enum Colors {RED,PURPLE,GREEN}
-	public enum Shape {SQUIGGLE,OVAL,DIAMOND}
-	
 	final int scaleX = 100; // cards are 200 pixels wide (cards lay horizontally)
 	final int scaleY = 70; // cards are 70 pixels tall
 	
