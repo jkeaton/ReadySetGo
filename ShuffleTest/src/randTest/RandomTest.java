@@ -3,12 +3,9 @@ package randTest;
 public class RandomTest {
 	
 	public static void main(String[]args){
-		System.err.println("creating the dealer\n");
 		Dealer sam = new Dealer();
-		System.err.println("done creating the dealer\n");
 		/* Test the Dealer */
 		testRand(sam);
-		System.err.println("finished with testRand(sam)\n");
 	}
 	
 	/**
