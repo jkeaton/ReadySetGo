@@ -54,6 +54,26 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
         // reset the borders to be hidden, and reset them to be yellow.
     }
     
+    private void buttonAction(JButton button, int row, int col, int pos){
+        //System.out.println("Called buttonAction");
+        if(selections[row][col]==false){
+            button.setBorderPainted(rootPaneCheckingEnabled);
+            selections[row][col]=true;
+            currentSet.add(pos);
+            buttonsSelected.add(button);
+        }
+        else{
+            button.setBorderPainted(false);
+            selections[row][col]=false;
+            currentSet.remove(pos);
+            buttonsSelected.remove(button);
+        }
+        
+        if(currentSet.size()==3){
+            testSet();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -479,18 +499,19 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(selections[0][0]==false){
-            jButton2.setBorderPainted(rootPaneCheckingEnabled);
-            selections[0][0]=true;
-            currentSet.add(0);
-            buttonsSelected.add(jButton2);
-        }
-        else{
-            jButton2.setBorderPainted(false);
-            selections[0][0]=false;
-            currentSet.remove((Integer)(0));
-            buttonsSelected.remove(jButton2);
-        }
+        buttonAction(jButton2, 0,0, 0);
+//        if(selections[0][0]==false){
+//            jButton2.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[0][0]=true;
+//            currentSet.add(0);
+//            buttonsSelected.add(jButton2);
+//        }
+//        else{
+//            jButton2.setBorderPainted(false);
+//            selections[0][0]=false;
+//            currentSet.remove((Integer)(0));
+//            buttonsSelected.remove(jButton2);
+//        }
         /**
         if(currentSet.size()==3){
             testSet();
@@ -499,226 +520,240 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-        if(selections[0][1]==false){
-            jButton17.setBorderPainted(rootPaneCheckingEnabled);
-            selections[0][1]=true;
-            currentSet.add(1);
-            buttonsSelected.add(jButton17);
-        }
-        else{
-            jButton17.setBorderPainted(false);
-            selections[0][1]=false;
-            currentSet.remove((Integer)(1));
-            buttonsSelected.remove(jButton17);
-        }
+        buttonAction(jButton17, 0, 1, 1);
+//        if(selections[0][1]==false){
+//            jButton17.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[0][1]=true;
+//            currentSet.add(1);
+//            buttonsSelected.add(jButton17);
+//        }
+//        else{
+//            jButton17.setBorderPainted(false);
+//            selections[0][1]=false;
+//            currentSet.remove((Integer)(1));
+//            buttonsSelected.remove(jButton17);
+//        }
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-        if(selections[0][2]==false){
-            jButton18.setBorderPainted(rootPaneCheckingEnabled);
-            selections[0][2]=true;
-            currentSet.add(2);
-            buttonsSelected.add(jButton18);
-        }
-        else{
-            jButton18.setBorderPainted(false);
-            selections[0][2]=false;
-            currentSet.remove((Integer)(2));
-            buttonsSelected.remove(jButton18);
-        }
+        buttonAction(jButton18, 0, 2, 2);
+//        if(selections[0][2]==false){
+//            jButton18.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[0][2]=true;
+//            currentSet.add(2);
+//            buttonsSelected.add(jButton18);
+//        }
+//        else{
+//            jButton18.setBorderPainted(false);
+//            selections[0][2]=false;
+//            currentSet.remove((Integer)(2));
+//            buttonsSelected.remove(jButton18);
+//        }
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
-        if(selections[1][0]==false){
-            jButton19.setBorderPainted(rootPaneCheckingEnabled);
-            selections[1][0]=true;
-            currentSet.add(3);
-            buttonsSelected.add(jButton19);
-        }
-        else{
-            jButton19.setBorderPainted(false);
-            selections[1][0]=false;
-            currentSet.remove((Integer)(3));
-            buttonsSelected.remove(jButton19);
-        }
+        buttonAction(jButton19, 1, 0, 3);
+//        if(selections[1][0]==false){
+//            jButton19.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[1][0]=true;
+//            currentSet.add(3);
+//            buttonsSelected.add(jButton19);
+//        }
+//        else{
+//            jButton19.setBorderPainted(false);
+//            selections[1][0]=false;
+//            currentSet.remove((Integer)(3));
+//            buttonsSelected.remove(jButton19);
+//        }
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
-        if(selections[1][1]==false){
-            jButton20.setBorderPainted(rootPaneCheckingEnabled);
-            selections[1][1]=true;
-            currentSet.add(4);
-            buttonsSelected.add(jButton20);
-        }
-        else{
-            jButton20.setBorderPainted(false);
-            selections[1][1]=false;
-            currentSet.remove((Integer)(4));
-            buttonsSelected.remove(jButton20);
-        }
+        buttonAction(jButton20, 1, 1, 4);
+//        if(selections[1][1]==false){
+//            jButton20.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[1][1]=true;
+//            currentSet.add(4);
+//            buttonsSelected.add(jButton20);
+//        }
+//        else{
+//            jButton20.setBorderPainted(false);
+//            selections[1][1]=false;
+//            currentSet.remove((Integer)(4));
+//            buttonsSelected.remove(jButton20);
+//        }
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         // TODO add your handling code here:
-        if(selections[1][2]==false){
-            jButton21.setBorderPainted(rootPaneCheckingEnabled);
-            selections[1][2]=true;
-            currentSet.add(5);
-            buttonsSelected.add(jButton21);
-        }
-        else{
-            jButton21.setBorderPainted(false);
-            selections[1][2]=false;
-            currentSet.remove((Integer)(5));
-            buttonsSelected.remove(jButton21);
-        }
+        buttonAction(jButton21, 1, 2, 5);
+//        if(selections[1][2]==false){
+//            jButton21.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[1][2]=true;
+//            currentSet.add(5);
+//            buttonsSelected.add(jButton21);
+//        }
+//        else{
+//            jButton21.setBorderPainted(false);
+//            selections[1][2]=false;
+//            currentSet.remove((Integer)(5));
+//            buttonsSelected.remove(jButton21);
+//        }
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
-        if(selections[2][0]==false){
-            jButton22.setBorderPainted(rootPaneCheckingEnabled);
-            selections[2][0]=true;
-            currentSet.add(6);
-            buttonsSelected.add(jButton22);
-        }
-        else{
-            jButton22.setBorderPainted(false);
-            selections[2][0]=false;
-            currentSet.remove((Integer)(6));
-            buttonsSelected.remove(jButton22);
-        }
+        buttonAction(jButton22, 2, 0, 6);
+//        if(selections[2][0]==false){
+//            jButton22.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[2][0]=true;
+//            currentSet.add(6);
+//            buttonsSelected.add(jButton22);
+//        }
+//        else{
+//            jButton22.setBorderPainted(false);
+//            selections[2][0]=false;
+//            currentSet.remove((Integer)(6));
+//            buttonsSelected.remove(jButton22);
+//        }
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         // TODO add your handling code here:
-        if(selections[2][1]==false){
-            jButton23.setBorderPainted(rootPaneCheckingEnabled);
-            selections[2][1]=true;
-            currentSet.add(7);
-            buttonsSelected.add(jButton23);
-        }
-        else{
-            jButton23.setBorderPainted(false);
-            selections[2][1]=false;
-            currentSet.remove((Integer)(7));
-            buttonsSelected.remove(jButton23);
-        }
+        buttonAction(jButton23, 2, 1, 7);
+//        if(selections[2][1]==false){
+//            jButton23.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[2][1]=true;
+//            currentSet.add(7);
+//            buttonsSelected.add(jButton23);
+//        }
+//        else{
+//            jButton23.setBorderPainted(false);
+//            selections[2][1]=false;
+//            currentSet.remove((Integer)(7));
+//            buttonsSelected.remove(jButton23);
+//        }
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         // TODO add your handling code here:
-        if(selections[2][2]==false){
-            jButton24.setBorderPainted(rootPaneCheckingEnabled);
-            selections[2][2]=true;
-            currentSet.add(8);
-            buttonsSelected.add(jButton24);
-        }
-        else{
-            jButton24.setBorderPainted(false);
-            selections[2][2]=false;
-            currentSet.remove((Integer)(8));
-            buttonsSelected.remove(jButton24);
-        }
+        buttonAction(jButton24, 2, 2, 8);
+//        if(selections[2][2]==false){
+//            jButton24.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[2][2]=true;
+//            currentSet.add(8);
+//            buttonsSelected.add(jButton24);
+//        }
+//        else{
+//            jButton24.setBorderPainted(false);
+//            selections[2][2]=false;
+//            currentSet.remove((Integer)(8));
+//            buttonsSelected.remove(jButton24);
+//        }
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
-        if(selections[3][0]==false){
-            jButton25.setBorderPainted(rootPaneCheckingEnabled);
-            selections[3][0]=true;
-            currentSet.add(9);
-            buttonsSelected.add(jButton25);
-        }
-        else{
-            jButton25.setBorderPainted(false);
-            selections[3][0]=false;
-            currentSet.remove((Integer)(9));
-            buttonsSelected.remove(jButton25);
-        }
+        buttonAction(jButton25, 3, 0, 9);
+//        if(selections[3][0]==false){
+//            jButton25.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[3][0]=true;
+//            currentSet.add(9);
+//            buttonsSelected.add(jButton25);
+//        }
+//        else{
+//            jButton25.setBorderPainted(false);
+//            selections[3][0]=false;
+//            currentSet.remove((Integer)(9));
+//            buttonsSelected.remove(jButton25);
+//        }
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
         // TODO add your handling code here:
-        if(selections[3][1]==false){
-            jButton26.setBorderPainted(rootPaneCheckingEnabled);
-            selections[3][1]=true;
-            currentSet.add(10);
-            buttonsSelected.add(jButton26);
-        }
-        else{
-            jButton26.setBorderPainted(false);
-            selections[3][1]=false;
-            currentSet.remove((Integer)(10));
-            buttonsSelected.remove(jButton26);
-        }
+        buttonAction(jButton26, 3, 1, 10);
+//        if(selections[3][1]==false){
+//            jButton26.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[3][1]=true;
+//            currentSet.add(10);
+//            buttonsSelected.add(jButton26);
+//        }
+//        else{
+//            jButton26.setBorderPainted(false);
+//            selections[3][1]=false;
+//            currentSet.remove((Integer)(10));
+//            buttonsSelected.remove(jButton26);
+//        }
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         // TODO add your handling code here:
-        if(selections[3][2]==false){
-            jButton27.setBorderPainted(rootPaneCheckingEnabled);
-            selections[3][2]=true;
-            currentSet.add(11);
-            buttonsSelected.add(jButton27);
-        }
-        else{
-            jButton27.setBorderPainted(false);
-            selections[3][2]=false;
-            currentSet.remove((Integer)(11));
-            buttonsSelected.remove(jButton27);
-        }
+        buttonAction(jButton27, 3, 2, 11);
+//        if(selections[3][2]==false){
+//            jButton27.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[3][2]=true;
+//            currentSet.add(11);
+//            buttonsSelected.add(jButton27);
+//        }
+//        else{
+//            jButton27.setBorderPainted(false);
+//            selections[3][2]=false;
+//            currentSet.remove((Integer)(11));
+//            buttonsSelected.remove(jButton27);
+//        }
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         // TODO add your handling code here:
-        if(selections[4][0]==false){
-            jButton28.setBorderPainted(rootPaneCheckingEnabled);
-            selections[4][0]=true;
-            currentSet.add(12);
-            buttonsSelected.add(jButton28);
-        }
-        else{
-            jButton28.setBorderPainted(false);
-            selections[4][0]=false;
-            currentSet.remove((Integer)(12));
-            buttonsSelected.remove(jButton28);
-        }
+        buttonAction(jButton28, 4, 0, 12);
+//        if(selections[4][0]==false){
+//            jButton28.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[4][0]=true;
+//            currentSet.add(12);
+//            buttonsSelected.add(jButton28);
+//        }
+//        else{
+//            jButton28.setBorderPainted(false);
+//            selections[4][0]=false;
+//            currentSet.remove((Integer)(12));
+//            buttonsSelected.remove(jButton28);
+//        }
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
         // TODO add your handling code here:
-        if(selections[4][1]==false){
-            jButton29.setBorderPainted(rootPaneCheckingEnabled);
-            selections[4][1]=true;
-            currentSet.add(13);
-            buttonsSelected.add(jButton29);
-        }
-        else{
-            jButton29.setBorderPainted(false);
-            selections[4][1]=false;
-            currentSet.remove((Integer)(13));
-            buttonsSelected.remove(jButton29);
-        }
+        buttonAction(jButton29, 4, 1, 13);
+//        if(selections[4][1]==false){
+//            jButton29.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[4][1]=true;
+//            currentSet.add(13);
+//            buttonsSelected.add(jButton29);
+//        }
+//        else{
+//            jButton29.setBorderPainted(false);
+//            selections[4][1]=false;
+//            currentSet.remove((Integer)(13));
+//            buttonsSelected.remove(jButton29);
+//        }
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
         // TODO add your handling code here:
-        if(selections[4][2]==false){
-            jButton30.setBorderPainted(rootPaneCheckingEnabled);
-            selections[4][2]=true;
-            currentSet.add(14);
-            buttonsSelected.add(jButton30);
-        }
-        else{
-            jButton30.setBorderPainted(false);
-            selections[4][2]=false;
-            currentSet.remove((Integer)(14));
-            buttonsSelected.remove(jButton30);
-        }
+        buttonAction(jButton30, 4, 2, 14);
+//        if(selections[4][2]==false){
+//            jButton30.setBorderPainted(rootPaneCheckingEnabled);
+//            selections[4][2]=true;
+//            currentSet.add(14);
+//            buttonsSelected.add(jButton30);
+//        }
+//        else{
+//            jButton30.setBorderPainted(false);
+//            selections[4][2]=false;
+//            currentSet.remove((Integer)(14));
+//            buttonsSelected.remove(jButton30);
+//        }
     }//GEN-LAST:event_jButton30ActionPerformed
 
     /**
