@@ -4,6 +4,11 @@
  */
 package r_set_g;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+
 /**
  *
  * @author Jestin
@@ -13,12 +18,22 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
     Dealer sam;
     Validator joe;
     Game game;
+    ArrayList<Integer> currentSet;
+    boolean[][] selections = {{false,false,false},
+                              {false,false,false},
+                              {false,false,false},
+                              {false,false,false},
+                              {false,false,false}};
+    
+    ArrayList<JButton> buttonsSelected;
     
     /**
      * Creates new form ReadySetGoFrame
      */
     public ReadySetGoFrame() {
         initComponents();
+        currentSet = new ArrayList<Integer>();
+        buttonsSelected = new ArrayList<JButton>();
         sam = new Dealer();
         joe = new Validator();
         game = new Game(sam,joe);
@@ -31,8 +46,13 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
         }
         System.out.println();
     }
-
     
+    public void testSet(){
+        // TODO: If the 3 selected cards are a set, clear the correct button Icons,
+        // set the images of the left labels to the Icons from the valid set.
+        // If 3 selected are not a set, indicate them in red, Thread.sleep(300),
+        // reset the borders to be hidden, and reset them to be yellow.
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,20 +76,20 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
+        jButton30 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -155,9 +175,11 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.GridLayout(5, 3, 5, 5));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setFocusPainted(false);
+        jButton2.setName("1"); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -165,159 +187,187 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
         });
         jPanel4.add(jButton2);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setFocusPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton17.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton17.setBorderPainted(false);
+        jButton17.setContentAreaFilled(false);
+        jButton17.setFocusPainted(false);
+        jButton17.setName("2"); // NOI18N
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton17ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3);
+        jPanel4.add(jButton17);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setFocusPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton18.setBorderPainted(false);
+        jButton18.setContentAreaFilled(false);
+        jButton18.setFocusPainted(false);
+        jButton18.setName("3"); // NOI18N
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton18ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4);
+        jPanel4.add(jButton18);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setFocusPainted(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton19.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton19.setBorderPainted(false);
+        jButton19.setContentAreaFilled(false);
+        jButton19.setFocusPainted(false);
+        jButton19.setName("4"); // NOI18N
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButton19ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton5);
+        jPanel4.add(jButton19);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setFocusPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton20.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton20.setBorderPainted(false);
+        jButton20.setContentAreaFilled(false);
+        jButton20.setFocusPainted(false);
+        jButton20.setName("5"); // NOI18N
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButton20ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton6);
+        jPanel4.add(jButton20);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton7.setBorderPainted(false);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setFocusPainted(false);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton21.setBorderPainted(false);
+        jButton21.setContentAreaFilled(false);
+        jButton21.setFocusPainted(false);
+        jButton21.setName("6"); // NOI18N
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButton21ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton7);
+        jPanel4.add(jButton21);
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton8.setBorderPainted(false);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setFocusPainted(false);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton22.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton22.setBorderPainted(false);
+        jButton22.setContentAreaFilled(false);
+        jButton22.setFocusPainted(false);
+        jButton22.setName("7"); // NOI18N
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButton22ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton8);
+        jPanel4.add(jButton22);
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton9.setBorderPainted(false);
-        jButton9.setContentAreaFilled(false);
-        jButton9.setFocusPainted(false);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton23.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton23.setBorderPainted(false);
+        jButton23.setContentAreaFilled(false);
+        jButton23.setFocusPainted(false);
+        jButton23.setName("8"); // NOI18N
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButton23ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton9);
+        jPanel4.add(jButton23);
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton10.setBorderPainted(false);
-        jButton10.setContentAreaFilled(false);
-        jButton10.setFocusPainted(false);
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton24.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton24.setBorderPainted(false);
+        jButton24.setContentAreaFilled(false);
+        jButton24.setFocusPainted(false);
+        jButton24.setName("9"); // NOI18N
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jButton24ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton10);
+        jPanel4.add(jButton24);
 
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton11.setBorderPainted(false);
-        jButton11.setContentAreaFilled(false);
-        jButton11.setFocusPainted(false);
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton25.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton25.setBorderPainted(false);
+        jButton25.setContentAreaFilled(false);
+        jButton25.setFocusPainted(false);
+        jButton25.setName("10"); // NOI18N
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jButton25ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton11);
+        jPanel4.add(jButton25);
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton12.setBorderPainted(false);
-        jButton12.setContentAreaFilled(false);
-        jButton12.setFocusPainted(false);
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton26.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton26.setBorderPainted(false);
+        jButton26.setContentAreaFilled(false);
+        jButton26.setFocusPainted(false);
+        jButton26.setName("11"); // NOI18N
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                jButton26ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton12);
+        jPanel4.add(jButton26);
 
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton13.setBorderPainted(false);
-        jButton13.setContentAreaFilled(false);
-        jButton13.setFocusPainted(false);
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton27.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton27.setBorderPainted(false);
+        jButton27.setContentAreaFilled(false);
+        jButton27.setFocusPainted(false);
+        jButton27.setName("12"); // NOI18N
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                jButton27ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton13);
+        jPanel4.add(jButton27);
 
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton14.setBorderPainted(false);
-        jButton14.setContentAreaFilled(false);
-        jButton14.setFocusPainted(false);
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton28.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton28.setBorderPainted(false);
+        jButton28.setContentAreaFilled(false);
+        jButton28.setFocusPainted(false);
+        jButton28.setName("13"); // NOI18N
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                jButton28ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton14);
+        jPanel4.add(jButton28);
 
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton15.setBorderPainted(false);
-        jButton15.setContentAreaFilled(false);
-        jButton15.setFocusPainted(false);
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton29.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton29.setBorderPainted(false);
+        jButton29.setContentAreaFilled(false);
+        jButton29.setFocusPainted(false);
+        jButton29.setName("14"); // NOI18N
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                jButton29ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton15);
+        jPanel4.add(jButton29);
 
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
-        jButton16.setBorderPainted(false);
-        jButton16.setContentAreaFilled(false);
-        jButton16.setFocusPainted(false);
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
+        jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
+        jButton30.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true));
+        jButton30.setBorderPainted(false);
+        jButton30.setContentAreaFilled(false);
+        jButton30.setFocusPainted(false);
+        jButton30.setName("15"); // NOI18N
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                jButton30ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton16);
+        jPanel4.add(jButton30);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -429,64 +479,247 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        System.out.println("button1\n");
+        if(selections[0][0]==false){
+            jButton2.setBorderPainted(rootPaneCheckingEnabled);
+            selections[0][0]=true;
+            currentSet.add(0);
+            buttonsSelected.add(jButton2);
+        }
+        else{
+            jButton2.setBorderPainted(false);
+            selections[0][0]=false;
+            currentSet.remove((Integer)(0));
+            buttonsSelected.remove(jButton2);
+        }
+        /**
+        if(currentSet.size()==3){
+            testSet();
+        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        if(selections[0][1]==false){
+            jButton17.setBorderPainted(rootPaneCheckingEnabled);
+            selections[0][1]=true;
+            currentSet.add(1);
+            buttonsSelected.add(jButton17);
+        }
+        else{
+            jButton17.setBorderPainted(false);
+            selections[0][1]=false;
+            currentSet.remove((Integer)(1));
+            buttonsSelected.remove(jButton17);
+        }
+    }//GEN-LAST:event_jButton17ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        if(selections[0][2]==false){
+            jButton18.setBorderPainted(rootPaneCheckingEnabled);
+            selections[0][2]=true;
+            currentSet.add(2);
+            buttonsSelected.add(jButton18);
+        }
+        else{
+            jButton18.setBorderPainted(false);
+            selections[0][2]=false;
+            currentSet.remove((Integer)(2));
+            buttonsSelected.remove(jButton18);
+        }
+    }//GEN-LAST:event_jButton18ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        if(selections[1][0]==false){
+            jButton19.setBorderPainted(rootPaneCheckingEnabled);
+            selections[1][0]=true;
+            currentSet.add(3);
+            buttonsSelected.add(jButton19);
+        }
+        else{
+            jButton19.setBorderPainted(false);
+            selections[1][0]=false;
+            currentSet.remove((Integer)(3));
+            buttonsSelected.remove(jButton19);
+        }
+    }//GEN-LAST:event_jButton19ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        if(selections[1][1]==false){
+            jButton20.setBorderPainted(rootPaneCheckingEnabled);
+            selections[1][1]=true;
+            currentSet.add(4);
+            buttonsSelected.add(jButton20);
+        }
+        else{
+            jButton20.setBorderPainted(false);
+            selections[1][1]=false;
+            currentSet.remove((Integer)(4));
+            buttonsSelected.remove(jButton20);
+        }
+    }//GEN-LAST:event_jButton20ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        if(selections[1][2]==false){
+            jButton21.setBorderPainted(rootPaneCheckingEnabled);
+            selections[1][2]=true;
+            currentSet.add(5);
+            buttonsSelected.add(jButton21);
+        }
+        else{
+            jButton21.setBorderPainted(false);
+            selections[1][2]=false;
+            currentSet.remove((Integer)(5));
+            buttonsSelected.remove(jButton21);
+        }
+    }//GEN-LAST:event_jButton21ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        if(selections[2][0]==false){
+            jButton22.setBorderPainted(rootPaneCheckingEnabled);
+            selections[2][0]=true;
+            currentSet.add(6);
+            buttonsSelected.add(jButton22);
+        }
+        else{
+            jButton22.setBorderPainted(false);
+            selections[2][0]=false;
+            currentSet.remove((Integer)(6));
+            buttonsSelected.remove(jButton22);
+        }
+    }//GEN-LAST:event_jButton22ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+        if(selections[2][1]==false){
+            jButton23.setBorderPainted(rootPaneCheckingEnabled);
+            selections[2][1]=true;
+            currentSet.add(7);
+            buttonsSelected.add(jButton23);
+        }
+        else{
+            jButton23.setBorderPainted(false);
+            selections[2][1]=false;
+            currentSet.remove((Integer)(7));
+            buttonsSelected.remove(jButton23);
+        }
+    }//GEN-LAST:event_jButton23ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+        if(selections[2][2]==false){
+            jButton24.setBorderPainted(rootPaneCheckingEnabled);
+            selections[2][2]=true;
+            currentSet.add(8);
+            buttonsSelected.add(jButton24);
+        }
+        else{
+            jButton24.setBorderPainted(false);
+            selections[2][2]=false;
+            currentSet.remove((Integer)(8));
+            buttonsSelected.remove(jButton24);
+        }
+    }//GEN-LAST:event_jButton24ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+        if(selections[3][0]==false){
+            jButton25.setBorderPainted(rootPaneCheckingEnabled);
+            selections[3][0]=true;
+            currentSet.add(9);
+            buttonsSelected.add(jButton25);
+        }
+        else{
+            jButton25.setBorderPainted(false);
+            selections[3][0]=false;
+            currentSet.remove((Integer)(9));
+            buttonsSelected.remove(jButton25);
+        }
+    }//GEN-LAST:event_jButton25ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+        if(selections[3][1]==false){
+            jButton26.setBorderPainted(rootPaneCheckingEnabled);
+            selections[3][1]=true;
+            currentSet.add(10);
+            buttonsSelected.add(jButton26);
+        }
+        else{
+            jButton26.setBorderPainted(false);
+            selections[3][1]=false;
+            currentSet.remove((Integer)(10));
+            buttonsSelected.remove(jButton26);
+        }
+    }//GEN-LAST:event_jButton26ActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+        if(selections[3][2]==false){
+            jButton27.setBorderPainted(rootPaneCheckingEnabled);
+            selections[3][2]=true;
+            currentSet.add(11);
+            buttonsSelected.add(jButton27);
+        }
+        else{
+            jButton27.setBorderPainted(false);
+            selections[3][2]=false;
+            currentSet.remove((Integer)(11));
+            buttonsSelected.remove(jButton27);
+        }
+    }//GEN-LAST:event_jButton27ActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+        if(selections[4][0]==false){
+            jButton28.setBorderPainted(rootPaneCheckingEnabled);
+            selections[4][0]=true;
+            currentSet.add(12);
+            buttonsSelected.add(jButton28);
+        }
+        else{
+            jButton28.setBorderPainted(false);
+            selections[4][0]=false;
+            currentSet.remove((Integer)(12));
+            buttonsSelected.remove(jButton28);
+        }
+    }//GEN-LAST:event_jButton28ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+        if(selections[4][1]==false){
+            jButton29.setBorderPainted(rootPaneCheckingEnabled);
+            selections[4][1]=true;
+            currentSet.add(13);
+            buttonsSelected.add(jButton29);
+        }
+        else{
+            jButton29.setBorderPainted(false);
+            selections[4][1]=false;
+            currentSet.remove((Integer)(13));
+            buttonsSelected.remove(jButton29);
+        }
+    }//GEN-LAST:event_jButton29ActionPerformed
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
+        if(selections[4][2]==false){
+            jButton30.setBorderPainted(rootPaneCheckingEnabled);
+            selections[4][2]=true;
+            currentSet.add(14);
+            buttonsSelected.add(jButton30);
+        }
+        else{
+            jButton30.setBorderPainted(false);
+            selections[4][2]=false;
+            currentSet.remove((Integer)(14));
+            buttonsSelected.remove(jButton30);
+        }
+    }//GEN-LAST:event_jButton30ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -524,21 +757,21 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
+    private javax.swing.JButton jButton30;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

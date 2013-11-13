@@ -4,6 +4,8 @@
  */
 package r_set_g;
 
+import javax.swing.Icon;
+
 /**
  *
  * @author Jestin
@@ -38,5 +40,17 @@ public class Game {
             for(int i = 0; i < 3; i++)
                 table[4][i] = sam.dealCard();
         }
+    }
+    
+    public boolean positionsAreSet(int a, int b, int c){
+        Card first = table[a / 3][a % 3];
+        Card second = table[b / 3][b % 3];
+        Card third = table[c / 3][c % 3];
+        return joe.isSet(first, second, third);
+    }
+    
+    public Icon[] getSetIcons(){
+        Icon[] icons = {null,null,null};
+        return icons;
     }
 }
