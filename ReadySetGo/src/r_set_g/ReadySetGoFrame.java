@@ -6,8 +6,12 @@ package r_set_g;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.border.Border;
 
 /**
  *
@@ -24,8 +28,9 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
                               {false,false,false},
                               {false,false,false},
                               {false,false,false}};
-    
     ArrayList<JButton> buttonsSelected;
+    Border selected = new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true);
+    Border badSet = new javax.swing.border.LineBorder(java.awt.Color.red, 6, true);
     
     /**
      * Creates new form ReadySetGoFrame
@@ -37,21 +42,91 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
         sam = new Dealer();
         joe = new Validator();
         game = new Game(sam,joe);
-        Card[][] c = game.getInitialTable();
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 3; j++){
-                System.out.print("["+i+"]["+j+"] "+c[i][j]);
+                System.out.print("["+i+"]["+j+"] "+game.getInitialTable()[i][j]);
             }
             System.out.println();
         }
         System.out.println();
     }
     
-    public void testSet(){
+    private void resetSelections(){
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 3; j++){
+                selections[i][j] = false;
+            }
+        }
+    }
+    
+    public void testSet() throws InterruptedException{
         // TODO: If the 3 selected cards are a set, clear the correct button Icons,
         // set the images of the left labels to the Icons from the valid set.
         // If 3 selected are not a set, indicate them in red, Thread.sleep(300),
         // reset the borders to be hidden, and reset them to be yellow.
+        int pos1 = currentSet.get(0);
+        int pos2 = currentSet.get(1);
+        int pos3 = currentSet.get(2);
+        Icon[] icons;
+        if(game.positionsAreSet(pos1,pos2,pos3)){
+            icons = game.getSetIcons(pos1, pos3, pos3);
+            game.removeSelection(pos3, pos3, pos3);
+            game.reorganizeCards();
+            if(game.setAvailable()){
+                if(game.getTableCardCount() >= 12){
+                    // Do nothing, don't add a row
+                }
+                else{
+                    if(!sam.currentIsEmpty())
+                        game.addRow();
+                    else{
+                        // Do not add a row, no more cards in deck to deal from
+                    }
+                }
+            }
+            else{ // no sets remain
+                if(game.getTableCardCount() <= 12){
+                    game.addRow();
+                }
+                else{
+                    // It would be better to provide a game over screen. 
+                    // That can happen next
+                    System.err.println("Game Over");
+                }
+            }
+            /**
+            for(Integer a: currentSet)
+                System.err.println(a);*/
+            
+            for(Integer a: currentSet)
+                System.err.println(game.getCardAtPos(a));
+        }
+        else{ // Selected cards aren't a set
+            for(JButton b: buttonsSelected){
+                b.setBorderPainted(false);
+                b.setBorder(badSet);
+                b.setBorderPainted(rootPaneCheckingEnabled);
+            }
+            Thread.sleep(500);
+            for(JButton b: buttonsSelected){
+                b.setBorderPainted(false);   
+                b.setBorder(selected);
+                b.setBorderPainted(rootPaneCheckingEnabled);
+            }
+            /**
+            for(Integer a: currentSet)
+                System.err.println(a);*/
+            
+            for(Integer a: currentSet)
+                System.err.println(game.getCardAtPos(a));
+            System.err.println("card count: " + game.getTableCardCount());
+        }
+        for(JButton b: buttonsSelected){
+            b.setBorderPainted(false);
+        }
+        buttonsSelected.clear();
+        currentSet.clear();
+        resetSelections();
     }
     
     private void buttonAction(JButton button, int row, int col, int pos){
@@ -68,9 +143,12 @@ public class ReadySetGoFrame extends javax.swing.JFrame {
             currentSet.remove((Integer)(pos));
             buttonsSelected.remove(button);
         }
-        
         if(currentSet.size()==3){
-            testSet();
+            try {
+                testSet();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ReadySetGoFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
