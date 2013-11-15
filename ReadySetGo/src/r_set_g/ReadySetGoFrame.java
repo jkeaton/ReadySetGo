@@ -29,11 +29,9 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     ArrayList<Integer> currentSet;
     Map<Integer,JButton> buttonMap = new HashMap<Integer, JButton>();
     
-    boolean[][] selections = {{false,false,false},
-                              {false,false,false},
-                              {false,false,false},
-                              {false,false,false},
-                              {false,false,false}};
+    boolean[][] selections = {{false,false,false,false,false},
+                              {false,false,false,false,false},
+                              {false,false,false,false,false}};
     ArrayList<JButton> buttonsSelected;
     Border selected = new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true);
     Border badSet = new javax.swing.border.LineBorder(java.awt.Color.red, 6, true);
@@ -88,7 +86,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         /* It's buggy right now -> I'm in the middle of fixing it.    */
         Iterator it = buttonMap.entrySet().iterator();
         for(Integer i = 0; i < 15; i++){
-            if(i<game.getTableCardCount() && game.getCardAtPos(i) != null)
+            if(game.getCardAtPos(i) != null)
                 buttonMap.get(i).setIcon((Icon)game.getCardAtPos(i).getIconImage());
             else
                 buttonMap.get(i).setIcon(null);
@@ -624,62 +622,62 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton19, 1, 0, 3);
+        buttonAction(jButton19, 0, 3, 3);
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton20, 1, 1, 4);
+        buttonAction(jButton20, 0, 4, 4);
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton21, 1, 2, 5);
+        buttonAction(jButton21, 1, 0, 5);
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton22, 2, 0, 6);
+        buttonAction(jButton22, 1, 1, 6);
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton23, 2, 1, 7);
+        buttonAction(jButton23, 1, 2, 7);
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton24, 2, 2, 8);
+        buttonAction(jButton24, 1, 3, 8);
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton25, 3, 0, 9);
+        buttonAction(jButton25, 1, 4, 9);
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton26, 3, 1, 10);
+        buttonAction(jButton26, 2, 0, 10);
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton27, 3, 2, 11);
+        buttonAction(jButton27, 2, 1, 11);
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton28, 4, 0, 12);
+        buttonAction(jButton28, 2, 2, 12);
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton29, 4, 1, 13);
+        buttonAction(jButton29, 2, 3, 13);
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
         // TODO add your handling code here:
-        buttonAction(jButton30, 4, 2, 14);
+        buttonAction(jButton30, 2, 4, 14);
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

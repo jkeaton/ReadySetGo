@@ -20,9 +20,9 @@ public class Validator {
         while(counter_a < 13 && !foundSet){
             if(counter_a < 13 && counter_b > counter_a && counter_c > counter_b && counter_c < 15){
                 // set cards
-                firstCard = c[counter_a / 3][counter_a % 3];
-                secondCard = c[counter_b / 3][counter_b % 3];
-                thirdCard = c[counter_c / 3][counter_c % 3];
+                firstCard = c[counter_a / 5][counter_a % 5];
+                secondCard = c[counter_b / 5][counter_b % 5];
+                thirdCard = c[counter_c / 5][counter_c % 5];
                 if(isSet(firstCard,secondCard,thirdCard)){
                     foundSet = true;
                     break;
