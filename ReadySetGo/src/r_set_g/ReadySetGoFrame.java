@@ -6,10 +6,14 @@ package r_set_g;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.Border;
 
@@ -23,6 +27,8 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     Validator joe;
     Game game;
     ArrayList<Integer> currentSet;
+    Map<Integer,JButton> buttonMap = new HashMap<Integer, JButton>();
+    
     boolean[][] selections = {{false,false,false},
                               {false,false,false},
                               {false,false,false},
@@ -37,25 +43,55 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
      */
     public ReadySetGoFrame() {
         initComponents();
+        // Set the button positions
+        buttonMap.put(0, jButton2);
+        buttonMap.put(1, jButton17);
+        buttonMap.put(2, jButton18);
+        buttonMap.put(3, jButton19);
+        buttonMap.put(4, jButton20);
+        buttonMap.put(5, jButton21);
+        buttonMap.put(6, jButton22);
+        buttonMap.put(7, jButton23);
+        buttonMap.put(8, jButton24);
+        buttonMap.put(9, jButton25);
+        buttonMap.put(10, jButton26);
+        buttonMap.put(11, jButton27);
+        buttonMap.put(12, jButton28);
+        buttonMap.put(13, jButton29);
+        buttonMap.put(14, jButton30);
         currentSet = new ArrayList<Integer>();
         buttonsSelected = new ArrayList<JButton>();
         sam = new Dealer();
         joe = new Validator();
         game = new Game(sam,joe);
-        for(int i = 0; i < 5; i++){
-            for(int j = 0; j < 3; j++){
-                System.out.print("["+i+"]["+j+"] "+game.getInitialTable()[i][j]);
+        game.setInitialTable();
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 5; j++){
+                System.out.print("["+i+"]["+j+"] "+game.getCurrentTable()[i][j]);
             }
             System.out.println();
         }
+        setButtonImages();
         System.out.println();
     }
     
     private void resetSelections(){
-        for(int i = 0; i < 5; i++){
-            for(int j = 0; j < 3; j++){
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 5; j++){
                 selections[i][j] = false;
             }
+        }
+    }
+    
+    private void setButtonImages(){
+        /* This is to be called to set the button images for the user */
+        /* It's buggy right now -> I'm in the middle of fixing it.    */
+        Iterator it = buttonMap.entrySet().iterator();
+        for(Integer i = 0; i < 15; i++){
+            if(i<game.getTableCardCount() && game.getCardAtPos(i) != null)
+                buttonMap.get(i).setIcon((Icon)game.getCardAtPos(i).getIconImage());
+            else
+                buttonMap.get(i).setIcon(null);
         }
     }
     
@@ -78,7 +114,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
                 }
                 else{
                     if(!sam.currentIsEmpty())
-                        game.addRow();
+                        game.addColumn();
                     else{
                         // Do not add a row, no more cards in deck to deal from
                     }
@@ -86,7 +122,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
             }
             else{ // no sets remain
                 if(game.getTableCardCount() <= 12){
-                    game.addRow();
+                    game.addColumn();
                 }
                 else{
                     // It would be better to provide a game over screen. 

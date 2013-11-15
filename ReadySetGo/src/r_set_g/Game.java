@@ -18,47 +18,56 @@ public class Game {
     public Game(Dealer s, Validator j){
         sam = s;
         sam.shuffle(); // get the deck ready to be used
+        sam.setNewDeck();
         joe = j;
-        table = new Card[5][3]; // 3 colums and 5 rows created in an array 
-        for(int i = 0; i < 5; i++){ /* Clear the cards initially */
-            for(int k = 0; k < 3; k++){
+        table = new Card[3][5]; // 3 rows and 5 columns 
+        for(int i = 0; i < 3; i++){ /* Clear the cards initially */
+            for(int k = 0; k < 5; k++){
                 table[i][k] = null;
             }
         }
     }
     
-    public Card[][] getInitialTable(){
-        for(int i = 0; i < 4; i++){ /* set the initial 12 cards */
-            for(int k = 0; k < 3; k++){
-                table[i][k] = sam.dealCard();
-                if(table[i][k] != null)
+    public void setInitialTable(){
+        for(int k = 0; k < 3; k++){ /* set the initial 12 cards */
+            for(int i = 0; i < 4; i++){ 
+                table[k][i] = sam.dealCard();
+                if(table[k][i] != null)
                     tableCardCount++; // increment if actual card is added
+                if(tableCardCount > 12)
+                    System.out.println("k: "+k+" i: "+i+"\n");
+                System.out.println("Table count after initialization: "+tableCardCount);
             }
         }
-        return table;
     }
     
-    public void addRow(){
+    public void addColumn(){
         if(!sam.currentIsEmpty()){
             for(int i = 0; i < 3; i++)
-                table[tableCardCount/3][i] = sam.dealCard(); // Add to bottom row
+                table[i][tableCardCount/3] = sam.dealCard(); // Add to column to right
         }
     }
     
     public boolean positionsAreSet(int a, int b, int c){
-        Card first = table[a / 3][a % 3];
-        Card second = table[b / 3][b % 3];
-        Card third = table[c / 3][c % 3];
+        Card first = table[a / 5][a % 5];
+        Card second = table[b / 5][b % 5];
+        Card third = table[c / 5][c % 5];
         return joe.isSet(first,second,third);
     }
     
-    public Card getCardAtPos(int a){
+    public Card getCardAtPos(Integer a){
         if(a>=0 && a <=14){
-            System.out.println("hello");
-            return table[a / 3][a % 3];
+            try{
+                return table[a / 5][a % 5];
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                return null;
+            }
         }
-        else
+        else{
             return null;
+        }
     }
     
     public void reorganizeCards(){
@@ -70,8 +79,8 @@ public class Game {
                 a = -1;
                 b = -1;
                 /* Find Hole */
-                for(int i = 0; i < tableCardCount/3; i++){
-                    for(int j = 0; j < 3; j++){
+                for(int i = 0; i < 3; i++){
+                for(int j = 0; j < tableCardCount/3; j++){
                         /* Hole Found */
                         if(table[i][j] == null){
                             a = i;
@@ -81,8 +90,8 @@ public class Game {
                     }
                 }
                 if(holeFound){
-                    for(int i = 4; i >= tableCardCount/3; i--){
-                        for(int j = 2; j <= 0; j--){
+                    for(int i = 2; i >= 0; i--){
+                        for(int j = 4; j >= tableCardCount/3; j--){
                             /* Found a card to reposition */
                             if(table[i][j] != null){
                                 table[a][b] = table[i][j];
@@ -101,9 +110,9 @@ public class Game {
     }
     
     public void removeSelection(int a, int b, int c){
-        table[a / 3][a % 3] = null;
-        table[b / 3][b % 3] = null;
-        table[c / 3][c % 3] = null;
+        table[a / 5][a % 5] = null;
+        table[b / 5][b % 5] = null;
+        table[c / 5][c % 5] = null;
         tableCardCount = tableCardCount - 3;
     }
     

@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 
 enum Shade {SOLID,DASHED,HOLLOW}
 enum Colors {RED,PURPLE,GREEN}
@@ -15,7 +16,7 @@ public class Card {
     final int scaleY = 70; // cards are 70 pixels tall
 
     Image myImage;
-    BufferedImage bufferedImage = null;
+    Icon img = null;
     Shade myShade;
     Colors myColor;
     Shape myShape;
@@ -31,7 +32,7 @@ public class Card {
      * @param c the shape on the card
      * @param d the amount of figures on the card
      */
-    public Card(int a, int b, int c, int d/*, File imgFile*/){
+    public Card(int a, int b, int c, int d,/* File imgFile*/String s){
         switch(a){
         case 1:
                 myShade = Shade.SOLID;
@@ -79,6 +80,7 @@ public class Card {
         }
         setCardMap(a,b,c,d);
         //setImage(imgFile);
+        setImage(s);
     }
 
     /**
@@ -99,7 +101,12 @@ public class Card {
         return cardMap;
     }
 
-    public int setImage(File f){
+    public int setImage(/*File f*/String s){
+        String modifiedImagePath = "/r_set_g/"+s;
+        img = (new javax.swing.ImageIcon(getClass().getResource(modifiedImagePath)));
+        
+        //img = (new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png")));
+        /**
         try {
             BufferedImage img = ImageIO.read(f);
             myImage = img.getScaledInstance(scaleX, scaleY, Image.SCALE_SMOOTH);
@@ -110,11 +117,12 @@ public class Card {
         catch (IOException e) {
             e.printStackTrace();
             return -1;
-        }
+        }*/
+        return 0;
     }
 
-    public BufferedImage getBufferedImage(){
-        return bufferedImage;
+    public Icon getIconImage(){
+        return img;
     }
 
     public String toString(){
