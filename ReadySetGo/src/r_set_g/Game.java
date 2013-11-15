@@ -14,8 +14,10 @@ public class Game {
     Dealer sam;
     Validator joe;
     Card[][] table;
+    Icon[] icons;
     int tableCardCount = 0;
     public Game(Dealer s, Validator j){
+        icons = new Icon[3];
         sam = s;
         sam.shuffle(); // get the deck ready to be used
         sam.setNewDeck();
@@ -114,6 +116,9 @@ public class Game {
         table[b / 5][b % 5] = null;
         table[c / 5][c % 5] = null;
         tableCardCount = tableCardCount - 3;
+        icons[0] = null;
+        icons[1] = null;
+        icons[2] = null;
     }
     
     public int getTableCardCount(){
@@ -125,10 +130,9 @@ public class Game {
     }
     
     public Icon[] getSetIcons(int a, int b, int c){
-        /* This is stubbed out for now */
-        /* This method should return the icons cooresponding to */
-        /* the cards in the set */
-        Icon[] icons = {null,null,null};
+        icons[0] = getCardAtPos(a).getIconImage();
+        icons[1] = getCardAtPos(b).getIconImage();
+        icons[2] = getCardAtPos(c).getIconImage();
         return icons;
     }
 }

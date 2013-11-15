@@ -81,10 +81,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         }
     }
     
-    private void setButtonImages(){
-        /* This is to be called to set the button images for the user */
-        /* It's buggy right now -> I'm in the middle of fixing it.    */
-        Iterator it = buttonMap.entrySet().iterator();
+    public void setButtonImages(){
         for(Integer i = 0; i < 15; i++){
             if(game.getCardAtPos(i) != null)
                 buttonMap.get(i).setIcon((Icon)game.getCardAtPos(i).getIconImage());
@@ -101,10 +98,12 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         int pos1 = currentSet.get(0);
         int pos2 = currentSet.get(1);
         int pos3 = currentSet.get(2);
-        Icon[] icons;
         if(game.positionsAreSet(pos1,pos2,pos3)){
-            icons = game.getSetIcons(pos1, pos3, pos3);
-            game.removeSelection(pos3, pos3, pos3);
+            Icon[] icons = game.getSetIcons(pos1, pos2, pos3);
+            jLabel4.setIcon(icons[0]);
+            jLabel5.setIcon(icons[1]);
+            jLabel6.setIcon(icons[2]);
+            game.removeSelection(pos1, pos2, pos3);
             game.reorganizeCards();
             if(game.setAvailable()){
                 if(game.getTableCardCount() >= 12){
@@ -128,12 +127,6 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
                     System.err.println("Game Over");
                 }
             }
-            /**
-            for(Integer a: currentSet)
-                System.err.println(a);*/
-            
-            for(Integer a: currentSet)
-                System.err.println(game.getCardAtPos(a));
         }
         else{ // Selected cards aren't a set
             for(JButton b: buttonsSelected){
@@ -150,10 +143,10 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
             /**
             for(Integer a: currentSet)
                 System.err.println(a);*/
-            
+            System.err.println("Not a set: ");
             for(Integer a: currentSet)
                 System.err.println(game.getCardAtPos(a));
-            System.err.println("card count: " + game.getTableCardCount());
+            System.err.println("Current card count: " + game.getTableCardCount());
         }
         for(JButton b: buttonsSelected){
             b.setBorderPainted(false);

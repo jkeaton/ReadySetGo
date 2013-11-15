@@ -72,7 +72,6 @@ public class Validator {
                 //return "not a set";
                 return false;
         } // If it gets through this gauntlet, it is a set;
-        //return ("\nThe Following is a set:\n"+a+b+c+"\n");
         return true;
     }
 }
