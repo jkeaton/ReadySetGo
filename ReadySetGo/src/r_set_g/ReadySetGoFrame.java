@@ -4,16 +4,10 @@
  */
 package r_set_g;
 
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BorderFactory;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.Border;
 
@@ -27,12 +21,14 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     Validator joe;
     Game game;
     ArrayList<Integer> currentSet;
-    Map<Integer,JButton> buttonMap = new HashMap<Integer, JButton>();
     
     boolean[][] selections = {{false,false,false,false,false},
                               {false,false,false,false,false},
                               {false,false,false,false,false}};
+    
+    JButton[] availableButtons;
     ArrayList<JButton> buttonsSelected;
+    //ArrayList<JButton> availableButtons;
     Border selected = new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 6, true);
     Border badSet = new javax.swing.border.LineBorder(java.awt.Color.red, 6, true);
     
@@ -42,21 +38,22 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     public ReadySetGoFrame() {
         initComponents();
         // Set the button positions
-        buttonMap.put(0, jButton2);
-        buttonMap.put(1, jButton17);
-        buttonMap.put(2, jButton18);
-        buttonMap.put(3, jButton19);
-        buttonMap.put(4, jButton20);
-        buttonMap.put(5, jButton21);
-        buttonMap.put(6, jButton22);
-        buttonMap.put(7, jButton23);
-        buttonMap.put(8, jButton24);
-        buttonMap.put(9, jButton25);
-        buttonMap.put(10, jButton26);
-        buttonMap.put(11, jButton27);
-        buttonMap.put(12, jButton28);
-        buttonMap.put(13, jButton29);
-        buttonMap.put(14, jButton30);
+        availableButtons = new JButton[15];
+        availableButtons[0]=jButton2;
+        availableButtons[1]=jButton17;
+        availableButtons[2]=jButton18;
+        availableButtons[3]=jButton19;
+        availableButtons[4]=jButton20;
+        availableButtons[5]=jButton21;
+        availableButtons[6]=jButton22;
+        availableButtons[7]=jButton23;
+        availableButtons[8]=jButton24;
+        availableButtons[9]=jButton25;
+        availableButtons[10]=jButton26;
+        availableButtons[11]=jButton27;
+        availableButtons[12]=jButton28;
+        availableButtons[13]=jButton29;
+        availableButtons[14]=jButton30;
         currentSet = new ArrayList<Integer>();
         buttonsSelected = new ArrayList<JButton>();
         sam = new Dealer();
@@ -69,6 +66,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
             }
             System.out.println();
         }
+        game.setAvailable();
         setButtonImages();
         System.out.println();
     }
@@ -82,11 +80,13 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     }
     
     public void setButtonImages(){
+        for(int i = 0; i < 15; i++)
+            availableButtons[i].setIcon(null);
         for(Integer i = 0; i < 15; i++){
             if(game.getCardAtPos(i) != null)
-                buttonMap.get(i).setIcon((Icon)game.getCardAtPos(i).getIconImage());
+                availableButtons[i].setIcon(game.getCardAtPos(i).getIconImage());
             else
-                buttonMap.get(i).setIcon(null);
+                availableButtons[i].setIcon(null);
         }
     }
     
@@ -103,6 +103,9 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
             jLabel4.setIcon(icons[0]);
             jLabel5.setIcon(icons[1]);
             jLabel6.setIcon(icons[2]);
+            for(JButton jb: buttonsSelected){
+                jb.setIcon(null);
+            }
             game.removeSelection(pos1, pos2, pos3);
             game.reorganizeCards();
             if(game.setAvailable()){
@@ -127,8 +130,13 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
                     System.err.println("Game Over");
                 }
             }
+            setButtonImages();
         }
         else{ // Selected cards aren't a set
+            for(JButton jb: buttonsSelected){
+                jb.setBorder(badSet);
+                jb.setBorderPainted(rootPaneCheckingEnabled);
+            }
             for(JButton b: buttonsSelected){
                 b.setBorderPainted(false);
                 b.setBorder(badSet);
@@ -140,9 +148,6 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
                 b.setBorder(selected);
                 b.setBorderPainted(rootPaneCheckingEnabled);
             }
-            /**
-            for(Integer a: currentSet)
-                System.err.println(a);*/
             System.err.println("Not a set: ");
             for(Integer a: currentSet)
                 System.err.println(game.getCardAtPos(a));
@@ -154,12 +159,14 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         buttonsSelected.clear();
         currentSet.clear();
         resetSelections();
+        game.setAvailable();
     }
     
     private void buttonAction(JButton button, int row, int col, int pos){
         //System.out.println("Called buttonAction");
         if(selections[row][col]==false){
-            button.setBorderPainted(rootPaneCheckingEnabled);
+            //button.setBorderPainted(rootPaneCheckingEnabled);
+            button.setBorderPainted(true);
             selections[row][col]=true;
             currentSet.add((Integer)(pos));
             buttonsSelected.add(button);

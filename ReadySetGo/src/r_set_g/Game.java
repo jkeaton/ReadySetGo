@@ -46,7 +46,8 @@ public class Game {
     public void addColumn(){
         if(!sam.currentIsEmpty()){
             for(int i = 0; i < 3; i++)
-                table[i][tableCardCount/3] = sam.dealCard(); // Add to column to right
+                table[i][4] = sam.dealCard(); // Add to column to right
+            tableCardCount += 3;
         }
     }
     
@@ -72,23 +73,33 @@ public class Game {
         }
     }
     
-    public void reorganizeCards(){
-        if(tableCardCount <= 12 && joe.setAvailable(table)){
+    public void reorganizeCards() throws InterruptedException{
+        System.out.println("start reorganizing cards");
+        if(tableCardCount < 12)
+            addColumn();
+        if(tableCardCount == 12 && joe.setAvailable(table)){
             int a, b;
-            boolean holeFound;
+            boolean holeFound,holeFilled;
             do{
                 holeFound = false;
+                holeFilled = false;
                 a = -1;
                 b = -1;
                 /* Find Hole */
                 for(int i = 0; i < 3; i++){
-                for(int j = 0; j < tableCardCount/3; j++){
+                    for(int j = 0; j < tableCardCount/3; j++){
                         /* Hole Found */
                         if(table[i][j] == null){
                             a = i;
                             b = j;
                             holeFound = true;
+                            /**
+                            System.out.println("hole found at: table["+a+"]["+b+"]");
+                            Thread.sleep(5000);*/
+                            break; // found a hole, stop looking for one
                         }
+                        if(holeFound)
+                            break;
                     }
                 }
                 if(holeFound){
@@ -98,13 +109,23 @@ public class Game {
                             if(table[i][j] != null){
                                 table[a][b] = table[i][j];
                                 table[i][j] = null;
+                                holeFilled = true;
+                                /**
+                                System.out.println("table[i][j] = "+table[i][j]);
+                                System.out.println("table["+a+"]["+b+"] = "+table[a][b]+" now");
+                                Thread.sleep(5000);*/
+                                break; // replaced one hole, next extra card is for next hole
                             }
                         }
+                        if(holeFilled)
+                            break;
                     }
                 }
+                System.out.println("stuck in a loop");
             }
             while(holeFound); // Only as long as a hole remains
         }
+        System.out.println("finished reorganizing cards");
     }
     
     public boolean setAvailable(){
