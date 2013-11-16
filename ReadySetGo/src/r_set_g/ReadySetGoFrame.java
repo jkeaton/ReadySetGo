@@ -817,6 +817,26 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         //this.setVisible(false);
+        Object[] options = {"Resume Game","New Game","Exit Game"};       
+        int n = JOptionPane.showOptionDialog(null,
+            "Select one of the available options Below:",
+            "Pause Menu",
+            JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.DEFAULT_OPTION,
+            null,
+            options,
+            options[2]);
+                System.out.println(n);
+                //Resume Game
+                if(n==0) { 
+                JOptionPane.getRootFrame().dispose(); }  
+                //New Game
+                else if(n==1) {          
+                new ReadySetGoFrame().setVisible(true);
+                ReadySetGoFrame.this.dispose();} 
+                //Exit Game
+                else if (n==2) {         
+                System.exit(0); }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
