@@ -4,6 +4,7 @@
  */
 package r_set_g;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,21 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     boolean[][] selections = {{false,false,false,false,false},
                               {false,false,false,false,false},
                               {false,false,false,false,false}};
+    
+    Border newSetBorders[] = {new javax.swing.border.LineBorder(new Color(255,0,0),6,true),
+                              new javax.swing.border.LineBorder(new Color(255,127,0),6,true),
+                              new javax.swing.border.LineBorder(new Color(255,255,0),6,true),
+                              new javax.swing.border.LineBorder(new Color(127,255,0),6,true),
+                              new javax.swing.border.LineBorder(new Color(0,255,0),6,true),
+                              new javax.swing.border.LineBorder(new Color(0,255,127),6,true),
+                              new javax.swing.border.LineBorder(new Color(0,255,255),6,true),
+                              new javax.swing.border.LineBorder(new Color(0,127,255),6,true),
+                              new javax.swing.border.LineBorder(new Color(0,0,255),6,true),
+                              new javax.swing.border.LineBorder(new Color(127,0,255),6,true),
+                              new javax.swing.border.LineBorder(new Color(255,0,255),6,true),
+                              new javax.swing.border.LineBorder(new Color(255,0,127),6,true)};
+    
+    
     
     JButton[] availableButtons;
     ArrayList<JButton> buttonsSelected;
@@ -89,9 +105,79 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
             else
                 availableButtons[i].setIcon(null);
         }
+        /* Enable only the buttons we need, disable the rest */
+        for(int i = 4; i >= game.getTableCardCount()/3; i--)
+            disableRow(i);
+        for(int i = 0; i < game.getTableCardCount()/3; i++)
+            enableRow(i);
     }
     
-    public void testSet() throws InterruptedException{
+    private void disableRow(int a){
+        switch(a){
+            case 4:
+                jButton20.setEnabled(false);
+                jButton25.setEnabled(false);
+                jButton30.setEnabled(false);
+                break;
+            case 3:
+                jButton19.setEnabled(false);
+                jButton24.setEnabled(false);
+                jButton29.setEnabled(false);
+                break;
+            case 2:
+                jButton18.setEnabled(false);
+                jButton23.setEnabled(false);
+                jButton28.setEnabled(false);
+                break;
+            case 1:
+                jButton17.setEnabled(false);
+                jButton22.setEnabled(false);
+                jButton27.setEnabled(false);
+                break;
+            case 0:
+                jButton2.setEnabled(false);
+                jButton21.setEnabled(false);
+                jButton26.setEnabled(false);
+                break;
+            default:
+                break;
+        }
+    }
+    
+    private void enableRow(int a){
+        switch(a){
+            case 4:
+                jButton20.setEnabled(true);
+                jButton25.setEnabled(true);
+                jButton30.setEnabled(true);
+                break;
+            case 3:
+                jButton19.setEnabled(true);
+                jButton24.setEnabled(true);
+                jButton29.setEnabled(true);
+                break;
+            case 2:
+                jButton18.setEnabled(true);
+                jButton23.setEnabled(true);
+                jButton28.setEnabled(true);
+                break;
+            case 1:
+                jButton17.setEnabled(true);
+                jButton22.setEnabled(true);
+                jButton27.setEnabled(true);
+                break;
+            case 0:
+                jButton2.setEnabled(true);
+                jButton21.setEnabled(true);
+                jButton26.setEnabled(true);
+                break;
+            default:
+                break;
+        }
+    }
+    
+    public boolean testSet() throws InterruptedException{
+        boolean result = false;
         int pos1 = currentSet.get(0);
         int pos2 = currentSet.get(1);
         int pos3 = currentSet.get(2);
@@ -129,37 +215,50 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
                 }
             }
             setButtonImages();
+            result = true;
         }
         else{ // Selected cards aren't a set
-            for(JButton jb: buttonsSelected){
-                jb.setBorder(badSet);
-                jb.setBorderPainted(rootPaneCheckingEnabled);
-            }
-            for(JButton b: buttonsSelected){
-                b.setBorderPainted(false);
-                b.setBorder(badSet);
-                b.setBorderPainted(rootPaneCheckingEnabled);
-            }
-            Thread.sleep(500);
-            for(JButton b: buttonsSelected){
-                b.setBorderPainted(false);   
-                b.setBorder(selected);
-                b.setBorderPainted(rootPaneCheckingEnabled);
-            }
-            System.err.println("Not a set: ");
-            for(Integer a: currentSet)
-                System.err.println(game.getCardAtPos(a));
-            System.err.println("Current card count: " + game.getTableCardCount());
+            result = false;
         }
         for(JButton b: buttonsSelected){
             b.setBorderPainted(false);
         }
-        buttonsSelected.clear();
+        //buttonsSelected.clear();
         currentSet.clear();
         resetSelections();
         if(!game.setAvailable())
             runPopupOption();
-            
+        return result;
+    }
+    
+    private void indicateBad() throws InterruptedException{
+        for(JButton jb: buttonsSelected){
+            jb.setBorder(badSet);
+            jb.setBorderPainted(true);
+            jb.update(jb.getGraphics());
+        }
+        Thread.sleep(2000);
+        for(JButton jb: buttonsSelected){
+            jb.setBorderPainted(false);
+            jb.setBorder(selected);
+        }
+        buttonsSelected.clear();
+    }
+    
+    private void indicateNew() throws InterruptedException{
+        for(int i = 0; i < 24; i++){
+            for(JButton jb: buttonsSelected){
+                jb.setBorder(newSetBorders[i%12]);
+                jb.setBorderPainted(true);
+                jb.update(jb.getGraphics());
+            }
+            Thread.sleep(35);
+        }
+        for(JButton jb: buttonsSelected){
+            jb.setBorderPainted(false);
+            jb.setBorder(selected);
+        }
+        buttonsSelected.clear();
     }
     
     private void runPopupOption(){
@@ -192,7 +291,10 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         }
         if(currentSet.size()==3){
             try {
-                testSet();
+                if(testSet())
+                    indicateNew();
+                else
+                    indicateBad();
             } catch (InterruptedException ex) {
                 Logger.getLogger(ReadySetGoFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -266,7 +368,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         jPanel1.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 153));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Your Last Set");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -321,7 +423,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         jPanel2.setPreferredSize(new java.awt.Dimension(650, 530));
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(153, 0, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Available Cards");
         jLabel3.setToolTipText("");
@@ -570,7 +672,8 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/setbg.jpg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 710));
+        jLabel7.setPreferredSize(new java.awt.Dimension(807, 713));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jMenu1.setText("File");
 

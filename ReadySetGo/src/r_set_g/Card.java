@@ -104,20 +104,6 @@ public class Card {
     public int setImage(/*File f*/String s){
         String modifiedImagePath = "/r_set_g/"+s;
         img = (new javax.swing.ImageIcon(getClass().getResource(modifiedImagePath)));
-        
-        //img = (new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png")));
-        /**
-        try {
-            BufferedImage img = ImageIO.read(f);
-            myImage = img.getScaledInstance(scaleX, scaleY, Image.SCALE_SMOOTH);
-            bufferedImage = new BufferedImage(scaleX, scaleY, BufferedImage.TYPE_4BYTE_ABGR);
-            // bufferedImage.getGraphics().drawImage(image, 0, 0 , null); -- used to print the image later
-            return 0;
-        } 
-        catch (IOException e) {
-            e.printStackTrace();
-            return -1;
-        }*/
         return 0;
     }
 
