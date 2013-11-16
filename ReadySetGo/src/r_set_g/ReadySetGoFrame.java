@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
 /**
@@ -160,7 +161,22 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         buttonsSelected.clear();
         currentSet.clear();
         resetSelections();
-        game.setAvailable();
+        if(!game.setAvailable())
+            runPopupOption();
+            
+    }
+    
+    private void runPopupOption(){
+        Object[] options = {"Start New Game","End Game"};
+        int n = JOptionPane.showOptionDialog(this,
+        "No more sets remain. What would you like to do?","Game Over",JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+        if(n==0){
+            new ReadySetGoFrame().setVisible(true);
+            ReadySetGoFrame.this.dispose();
+        }
+        else
+            System.exit(1);
     }
     
     private void buttonAction(JButton button, int row, int col, int pos){
@@ -602,7 +618,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-         new ReadySetGoFrame().setVisible(true);
+        new ReadySetGoFrame().setVisible(true);
         ReadySetGoFrame.this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
