@@ -74,10 +74,9 @@ public class Game {
     }
     
     public void reorganizeCards() throws InterruptedException{
-        System.out.println("start reorganizing cards");
         if(tableCardCount < 12)
             addColumn();
-        if(tableCardCount == 12 && joe.setAvailable(table)){
+        if(tableCardCount == 12/* && joe.setAvailable(table)*/){
             int a, b;
             boolean holeFound,holeFilled;
             do{
@@ -121,11 +120,9 @@ public class Game {
                             break;
                     }
                 }
-                System.out.println("stuck in a loop");
             }
             while(holeFound); // Only as long as a hole remains
         }
-        System.out.println("finished reorganizing cards");
     }
     
     public boolean setAvailable(){

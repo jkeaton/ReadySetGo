@@ -123,6 +123,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
             else{ // no sets remain
                 if(game.getTableCardCount() <= 12){
                     game.addColumn();
+                    game.reorganizeCards();
                 }
                 else{
                     // It would be better to provide a game over screen. 
