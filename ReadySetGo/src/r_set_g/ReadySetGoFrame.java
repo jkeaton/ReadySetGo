@@ -92,10 +92,6 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     }
     
     public void testSet() throws InterruptedException{
-        // TODO: If the 3 selected cards are a set, clear the correct button Icons,
-        // set the images of the left labels to the Icons from the valid set.
-        // If 3 selected are not a set, indicate them in red, Thread.sleep(300),
-        // reset the borders to be hidden, and reset them to be yellow.
         int pos1 = currentSet.get(0);
         int pos2 = currentSet.get(1);
         int pos3 = currentSet.get(2);
@@ -265,18 +261,19 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 255, 255), new java.awt.Color(0, 102, 204)));
         jPanel1.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Your Last Set");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jSeparator1.setBackground(new java.awt.Color(0, 255, 204));
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 255));
+        jSeparator1.setBackground(new java.awt.Color(0, 51, 255));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 102));
+        jSeparator1.setOpaque(true);
 
         jPanel5.setBackground(new java.awt.Color(0, 102, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(6, 6, 6, 6));
@@ -285,15 +282,12 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         jPanel5.setLayout(new java.awt.GridLayout(3, 1, 5, 5));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
         jPanel5.add(jLabel4);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
         jPanel5.add(jLabel5);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/blankCard_150.png"))); // NOI18N
         jPanel5.add(jLabel6);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -327,14 +321,15 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         jPanel2.setPreferredSize(new java.awt.Dimension(650, 530));
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 66, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Available Cards");
         jLabel3.setToolTipText("");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jSeparator3.setBackground(new java.awt.Color(51, 255, 0));
-        jSeparator3.setForeground(new java.awt.Color(0, 102, 0));
+        jSeparator3.setBackground(new java.awt.Color(255, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(102, 0, 0));
+        jSeparator3.setOpaque(true);
 
         jPanel4.setBackground(new java.awt.Color(0, 153, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(6, 10, 6, 10));

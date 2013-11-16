@@ -76,7 +76,7 @@ public class Game {
     public void reorganizeCards() throws InterruptedException{
         if(tableCardCount < 12)
             addColumn();
-        if(tableCardCount <= 12/* && joe.setAvailable(table)*/){
+        if(tableCardCount <= 12){
             int a, b;
             boolean holeFound,holeFilled;
             do{
@@ -92,9 +92,6 @@ public class Game {
                             a = i;
                             b = j;
                             holeFound = true;
-                            /**
-                            System.out.println("hole found at: table["+a+"]["+b+"]");
-                            Thread.sleep(5000);*/
                             break; // found a hole, stop looking for one
                         }
                         if(holeFound)
@@ -109,10 +106,6 @@ public class Game {
                                 table[a][b] = table[i][j];
                                 table[i][j] = null;
                                 holeFilled = true;
-                                /**
-                                System.out.println("table[i][j] = "+table[i][j]);
-                                System.out.println("table["+a+"]["+b+"] = "+table[a][b]+" now");
-                                Thread.sleep(5000);*/
                                 break; // replaced one hole, next extra card is for next hole
                             }
                         }
