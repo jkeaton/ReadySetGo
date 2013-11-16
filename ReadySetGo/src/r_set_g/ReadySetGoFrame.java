@@ -345,6 +345,9 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -367,7 +370,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 255, 255), new java.awt.Color(0, 102, 204)));
         jPanel1.setOpaque(false);
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Your Last Set");
@@ -422,7 +425,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(650, 530));
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Available Cards");
@@ -709,6 +712,30 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Help");
+
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/helpIcon.png"))); // NOI18N
+        jMenuItem4.setText("About");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/realHelp.png"))); // NOI18N
+        jMenuItem5.setText("How To Play");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -802,8 +829,39 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        System.exit(1);
+        System.exit(0);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,
+        "Greetings, and welcome to Ready-Set-Go, the electronic version of \"Set\",\n"
+      + "which was published in 1991 by Set Enterprises. This version was created by\n"
+      + "Yaw Agyepong, Jestin Keaton, Corey Masters, Steven Ng, and Andre Vicente.\n"
+      + "This was a class project for course SWE 3623, taught by Dr. Sheryl Duggins.",
+        "Ready-SET-Go v.1.0",
+        JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,
+        "Set is very easy to play. Each card in this game has 4 attributes:\n\n"
+      + "    - Color, with values  (Red,Green, or Purple)\n"
+      + "    - Amount, with values (1, 2, or 3)\n"
+      + "    - Shade, with values  (Solid, Dashed, or Hollow)\n"
+      + "    - Shape, with values  (Squiggle, Oval, or Diamond)\n\n"
+      + "    A Set is a group of 3 cards for which the values of each attribute\n"
+      + "of the three cards are all the same or all different. For example,\n"
+      + "3 cards with Shades \"Hollow\", \"Dashed\", and \"Solid\" satisfy the\n"
+      + "\"Shade\" condition for a set. If those 3 cards had Colors \"Green\",\n"
+      + "\"Green\", and \"Green\" they would also satisfy the \"Color\" condition.\n"
+      + "Keep in mind that for 3 cards to be a set, all 4 attributes must be\n"
+      + "satisfied. The game ends when all available sets have been chosen\n"
+      + "by the player. Have Fun!!!\n",
+        "How To Play",
+        JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -864,10 +922,13 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
