@@ -76,7 +76,7 @@ public class Game {
     public void reorganizeCards() throws InterruptedException{
         if(tableCardCount < 12)
             addColumn();
-        if(tableCardCount == 12/* && joe.setAvailable(table)*/){
+        if(tableCardCount <= 12/* && joe.setAvailable(table)*/){
             int a, b;
             boolean holeFound,holeFilled;
             do{
