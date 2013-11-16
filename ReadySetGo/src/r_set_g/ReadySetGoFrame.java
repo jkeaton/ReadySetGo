@@ -77,12 +77,6 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         joe = new Validator();
         game = new Game(sam,joe);
         game.setInitialTable();
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 5; j++){
-                System.out.print("["+i+"]["+j+"] "+game.getCurrentTable()[i][j]);
-            }
-            System.out.println();
-        }
         game.setAvailable();
         setButtonImages();
         System.out.println();
@@ -96,7 +90,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         }
     }
     
-    public void setButtonImages(){
+    private void setButtonImages(){
         for(int i = 0; i < 15; i++)
             availableButtons[i].setIcon(null);
         for(Integer i = 0; i < 15; i++){
@@ -176,7 +170,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         }
     }
     
-    public boolean testSet() throws InterruptedException{
+    private boolean testSet() throws InterruptedException{
         boolean result = false;
         int pos1 = currentSet.get(0);
         int pos2 = currentSet.get(1);
@@ -217,9 +211,6 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
             setButtonImages();
             result = true;
         }
-        else{ // Selected cards aren't a set
-            result = false;
-        }
         for(JButton b: buttonsSelected){
             b.setBorderPainted(false);
         }
@@ -245,6 +236,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         buttonsSelected.clear();
     }
     
+    @SuppressWarnings("SleepWhileInLoop")
     private void indicateNew() throws InterruptedException{
         for(int i = 0; i < 24; i++){
             for(JButton jb: buttonsSelected){

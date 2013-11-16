@@ -25,7 +25,9 @@ public class Validator {
                 thirdCard = c[counter_c / 5][counter_c % 5];
                 if(isSet(firstCard,secondCard,thirdCard)){
                     foundSet = true;
-                    System.out.println("Hint: Positions {["+counter_a+"],["+counter_b+"], and ["+counter_c+"]} are a set");
+                    /* We may use this, but if we do, it would be gold plating since it's not in the SRS */
+                    /* It's only here for debugging purposes and possibly to aid in presenting prototype */
+                    //System.out.println("Hint: Positions {["+counter_a+"],["+counter_b+"], and ["+counter_c+"]} are a set");
                     break;
                 }
                 else{ // we must move the counters that represent the cards

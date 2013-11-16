@@ -36,9 +36,6 @@ public class Game {
                 table[k][i] = sam.dealCard();
                 if(table[k][i] != null)
                     tableCardCount++; // increment if actual card is added
-                if(tableCardCount > 12)
-                    System.out.println("k: "+k+" i: "+i+"\n");
-                System.out.println("Table count after initialization: "+tableCardCount);
             }
         }
     }
