@@ -360,16 +360,17 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/startButton.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/start1.png"))); // NOI18N
         jButton1.setContentAreaFilled(false);
         jButton1.setOpaque(false);
-        jButton1.setPreferredSize(new java.awt.Dimension(450, 302));
+        jButton1.setPreferredSize(new java.awt.Dimension(400, 92));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/start2.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 300, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 255, 255), new java.awt.Color(0, 102, 204)));
@@ -731,9 +732,9 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         });
         jMenu2.add(jMenuItem4);
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, 0));
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, 0));
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/realHelp.png"))); // NOI18N
-        jMenuItem5.setText("How To Play");
+        jMenuItem5.setText("Instructions");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -741,7 +742,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         });
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, 0));
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, 0));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/thumbsup.png"))); // NOI18N
         jMenuItem6.setText("Hint");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
