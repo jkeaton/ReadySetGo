@@ -228,7 +228,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
             jb.setBorderPainted(true);
             jb.update(jb.getGraphics());
         }
-        Thread.sleep(2000);
+        Thread.sleep(250);
         for(JButton jb: buttonsSelected){
             jb.setBorderPainted(false);
             jb.setBorder(selected);
