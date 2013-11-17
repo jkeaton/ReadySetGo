@@ -12,7 +12,7 @@ public class Validator {
     String hint;
     public Validator(){}
     
-    public boolean setAvailable(Card[][] c){
+    public boolean setAvailable(Card[][] c, int cardCount){
         int counter_a = 0;
         int counter_b = 1;
         int counter_c = 2;
@@ -28,7 +28,9 @@ public class Validator {
                     foundSet = true;
                     /* We may use this, but if we do, it would be gold plating since it's not in the SRS */
                     /* It's only here for debugging purposes and possibly to aid in presenting prototype */
-                    hint = "Hint: Positions ["+(counter_a)+"],["+(counter_b)+"], and [???] are a set";
+                    int hintA = (counter_a+1)-((counter_a / 5)*((15-cardCount)/3));
+                    int hintB = (counter_b+1)-((counter_b / 5)*((15-cardCount)/3));
+                    hint = "Hint: Positions ["+hintA+"],["+hintB+"], and [???] are a set";
                     break;
                 }
                 else{ // we must move the counters that represent the cards

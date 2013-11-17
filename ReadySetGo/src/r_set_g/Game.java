@@ -116,7 +116,7 @@ public class Game {
     }
     
     public boolean setAvailable(){
-        return joe.setAvailable(table);
+        return joe.setAvailable(table, tableCardCount);
     }
     
     public void removeSelection(int a, int b, int c){
