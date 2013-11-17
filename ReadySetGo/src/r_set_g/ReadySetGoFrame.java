@@ -697,7 +697,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, 0));
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/pauseButton.png"))); // NOI18N
         jMenuItem2.setText("Pause");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -721,7 +721,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
 
         jMenu2.setText("Help");
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, 0));
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/helpIcon.png"))); // NOI18N
         jMenuItem4.setText("About");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -731,7 +731,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         });
         jMenu2.add(jMenuItem4);
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, 0));
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/realHelp.png"))); // NOI18N
         jMenuItem5.setText("How To Play");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -741,7 +741,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         });
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, 0));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/thumbsup.png"))); // NOI18N
         jMenuItem6.setText("Hint");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
