@@ -9,6 +9,7 @@ package r_set_g;
  * @author Jestin
  */
 public class Validator {
+    String hint;
     public Validator(){}
     
     public boolean setAvailable(Card[][] c){
@@ -27,7 +28,7 @@ public class Validator {
                     foundSet = true;
                     /* We may use this, but if we do, it would be gold plating since it's not in the SRS */
                     /* It's only here for debugging purposes and possibly to aid in presenting prototype */
-                    //System.out.println("Hint: Positions {["+counter_a+"],["+counter_b+"], and ["+counter_c+"]} are a set");
+                    hint = "Hint: Positions ["+(counter_a+1)+"],["+(counter_b+1)+"], and [???] are a set";
                     break;
                 }
                 else{ // we must move the counters that represent the cards
@@ -60,6 +61,10 @@ public class Validator {
                 break;
         }
         return foundSet;
+    }
+    
+    public String getHint(){
+        return hint;
     }
     
     public boolean isSet(Card a, Card b, Card c){
