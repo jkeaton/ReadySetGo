@@ -304,6 +304,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
 
         jSeparator2 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -359,9 +360,21 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/r_set_g/startButton.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.setOpaque(false);
+        jButton1.setPreferredSize(new java.awt.Dimension(450, 302));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
+
         jPanel1.setBackground(new java.awt.Color(0, 0, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 255, 255), new java.awt.Color(0, 102, 204)));
         jPanel1.setOpaque(false);
+        jPanel1.setVisible(false);
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
@@ -416,6 +429,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         jPanel2.setBackground(new java.awt.Color(102, 255, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 255, 255), new java.awt.Color(0, 102, 204)));
         jPanel2.setOpaque(false);
+        jPanel2.setVisible(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(650, 530));
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -829,7 +843,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         // TODO add your handling code here:
         //this.setVisible(false);
         Object[] options = {"Resume Game","New Game","Exit Game"};       
-        int n = JOptionPane.showOptionDialog(null,
+        int n = JOptionPane.showOptionDialog(this,
             "Select one of the available options Below:",
             "Pause Menu",
             JOptionPane.YES_NO_CANCEL_OPTION,
@@ -894,6 +908,13 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        jButton1.setVisible(false);
+        jPanel1.setVisible(true);
+        jPanel2.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -930,6 +951,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
