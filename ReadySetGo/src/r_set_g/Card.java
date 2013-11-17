@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 
 enum Shade {SOLID,DASHED,HOLLOW}
-enum Colors {RED,PURPLE,GREEN}
+enum Colors {RED,BLUE,GREEN}
 enum Shape {SQUIGGLE,OVAL,DIAMOND}
 
 public class Card {
@@ -52,7 +52,7 @@ public class Card {
                 myColor = Colors.RED;
                 break;
         case 2:
-                myColor = Colors.PURPLE;
+                myColor = Colors.BLUE;
                 break;
         case 3:
                 myColor = Colors.GREEN;

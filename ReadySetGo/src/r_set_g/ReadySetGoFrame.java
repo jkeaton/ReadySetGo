@@ -859,7 +859,7 @@ public class ReadySetGoFrame extends javax.swing.JFrame{
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this,
         "Set is very easy to play. Each card in this game has 4 attributes:\n\n"
-      + "    - Color, with values  (Red,Green, or Purple)\n"
+      + "    - Color, with values  (Red,Green, or Blue)\n"
       + "    - Amount, with values (1, 2, or 3)\n"
       + "    - Shade, with values  (Solid, Dashed, or Hollow)\n"
       + "    - Shape, with values  (Squiggle, Oval, or Diamond)\n\n"
